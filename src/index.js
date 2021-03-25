@@ -70,7 +70,8 @@ async function postResult(retryCount, data){
             "https://join.reckon.com/test2/submitResults",
             data
         )
-        if (response.statusText === "OK"){
+        if (response.statusText === "OK"){            
+            console.log(response.data);
             return response.data}else{
             console.log("Retrying postResultAPICall");
             return postResult(++retryCount);
@@ -80,7 +81,8 @@ async function postResult(retryCount, data){
         if (err.response.statusText !== "OK"){
             return postResult(++retryCount);
         }else{
-            return response.data;        
+            console.log(response.data);
+            return response.data;
         }     
     }
 }
@@ -99,16 +101,12 @@ if(position==="NOT_FOUND"){
 }
     }
     )
-console.log({
-    candidate: "Rohit Mody",
-    text: apisResponses[0].text,
-    results: results
-})
-postResult(0, {
+    postResult(0, {
     candidate: "Rohit Mody",
     text: apisResponses[0].text,
     results: results
 });
+
 console.log("-----------------------END-----------------------");
 res.set("Content-Type", "application/json");
 res.status(204)
@@ -136,7 +134,6 @@ function findSubStr(str, sub){
             }
         }
     }
-    console.log(position)
     if(position.length > 0){
         return position;
     }else{
