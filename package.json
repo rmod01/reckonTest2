@@ -1,0 +1,33 @@
+{
+  "name": "reckontest2",
+  "version": "1.0.0",
+  "description": "Reckon Test 2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "test"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.2",
+    "chai": "^4.3.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmod01/reckonTest2.git"
+  },
+  "keywords": [
+    "Reckon",
+    "Test",
+    "2"
+  ],
+  "author": "Rohit Mody",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmod01/reckonTest2/issues"
+  },
+  "homepage": "https://github.com/rmod01/reckonTest2#readme"
+}
