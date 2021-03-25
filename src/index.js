@@ -5,9 +5,8 @@ const port = 9999;
 
 async function getLookupStr(retryCount){
     try{
-        console.log("Retry Count - getLookupStr", retryCount);
+        console.log("Retry Count - LookupStr - API Call", retryCount);
         const response = await axios.get("https://join.reckon.com/test2/textToSearch",)
-        console.log(response.data)
         /* const mockRestextToSearch = {
             text:
             "Peter told me (actually he slurred) that peter the pickle piper a pitted pickle before he petered out. Phew!"};
@@ -31,9 +30,8 @@ async function getLookupStr(retryCount){
 
 async function getSearchStr(retryCount){
     try{
-        console.log("Retry Count - getSearchStr:", retryCount);
+        console.log("Retry Count - SearchStr - API Call :", retryCount);
         const response = await axios.get("https://join.reckon.com/test2/subTexts",)
-        console.log(response.data)
         /* const mockResSubTexts = {
             subTexts: ["Peter", "peter", "Pick", "Pi", "Z"]
             };
@@ -73,7 +71,6 @@ async function postResult(retryCount, data){
             data
         )
         if (response.statusText === "OK"){
-            console.log(response.data);
             return response.data}else{
             console.log("Retrying postResultAPICall");
             return postResult(++retryCount);
@@ -102,8 +99,12 @@ if(position==="NOT_FOUND"){
 }
     }
     )
-
-const postRes = postResult(0, {
+console.log({
+    candidate: "Rohit Mody",
+    text: apisResponses[0].text,
+    results: results
+})
+postResult(0, {
     candidate: "Rohit Mody",
     text: apisResponses[0].text,
     results: results
@@ -135,6 +136,7 @@ function findSubStr(str, sub){
             }
         }
     }
+    console.log(position)
     if(position.length > 0){
         return position;
     }else{
@@ -149,3 +151,5 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)
 });
+
+module.exports = findSubStr;
